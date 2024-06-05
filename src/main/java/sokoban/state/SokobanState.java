@@ -164,6 +164,12 @@ public class SokobanState implements State<Direction> {
     }
 
     private boolean isEmpty(Position position) {
+        for (var p : positions) {
+            if(p.get().equals(position)) {
+                return false;
+            }
+        }
+        return board.getPosition(position.row(), position.col()) != WALL;
     }
 
 
