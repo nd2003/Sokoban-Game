@@ -1,0 +1,5 @@
+.table-view .table-row-cell {
+    -fx-font-family: 'Consolas';
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}

@@ -1,0 +1,29 @@
+.root {
+    -fx-font-size: 18;
+}
+
+.square.light {
+    -fx-background-color: white;
+    -fx-border-style: solid;
+    -fx-border-color: black;
+}
+
+.square.light:hover, .square.target:hover{
+    -fx-background-color: #FAFA33;
+}
+
+.square.out {
+    -fx-background-color: #F4F4F4;
+}
+
+.square.wall {
+    -fx-background-color: black;
+    -fx-border-style: solid;
+    -fx-border-color: white;
+}
+
+.square.target {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-background-color: #B2FF78;
+}
