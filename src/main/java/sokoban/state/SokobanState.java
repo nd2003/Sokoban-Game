@@ -63,6 +63,19 @@ public class SokobanState implements State<Direction> {
     }
 
     private void checkPositions(Position[] positions) {
+        if (positions == null || positions.length != 4) {
+            throw new IllegalArgumentException("Exactly four positions are required.");
+        }
+
+        for (var position : positions) {
+            if(!isOnBoard(position))
+            {
+                throw new IllegalArgumentException("Position is not on the board.");
+            }
+        }
+    }
+
+    private boolean isOnBoard(Position position) {
 
     }
 
