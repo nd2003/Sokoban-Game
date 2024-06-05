@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import lombok.NonNull;
 import lombok.Setter;
 import org.tinylog.Logger;
+import sokoban.results.GameResult;
 import sokoban.results.GameResultRepository;
 import sokoban.state.Direction;
 import sokoban.state.Position;
@@ -35,6 +36,7 @@ import util.javafx.Stopwatch;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Objects;
 import java.util.Optional;
@@ -331,6 +333,13 @@ public final class GameController {
                 .findFirst();
     }
 
-
+    private GameResult createGameResult() {
+        return GameResult.builder()
+                .player(playerName)
+                .solved(state.isSolved())
+                .duration(Duration.between(startTime, Instant.now()))
+                .steps(countOfSteps.get())
+                .build();
+    }
 
 }
