@@ -1,6 +1,7 @@
 package sokoban.state;
 
 import javafx.beans.property.ReadOnlyBooleanWrapper;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import puzzle.State;
 
@@ -81,6 +82,14 @@ public class SokobanState implements State<Direction> {
                 board.getPosition(position.row(), position.col()) != WALL &&
                 board.getPosition(position.row(), position.col()) != OUT_OF_BOARD;
 
+    }
+
+    public Position getPosition(int index) {
+        return positions[index].get();
+    }
+
+    public ReadOnlyObjectProperty<Position> positionProperty(int index) {
+        return positions[index].getReadOnlyProperty();
     }
 
     @Override
