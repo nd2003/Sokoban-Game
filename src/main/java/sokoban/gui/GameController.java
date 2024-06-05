@@ -165,6 +165,26 @@ public final class GameController {
     private void performMove(final Direction direction) {
     }
 
+    private void performMove(
+            final Direction direction) {
+
+        if (state.isLegalMove(direction)) {
+            Logger.info("Move: {}", direction);
+
+            state.makeMove(direction);
+            Logger.trace("New state: {}", state);
+
+            countOfSteps.set(countOfSteps.get() + 1);
+
+            showState();
+            if (state.isSolved()) {
+                isSolved.set(true);
+            }
+        } else {
+            Logger.warn("Invalid move: {}", direction);
+        }
+    }
+
 
 
 }
