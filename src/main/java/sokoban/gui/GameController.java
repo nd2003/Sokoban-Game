@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,7 +17,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import lombok.NonNull;
 import lombok.Setter;
 import org.tinylog.Logger;
 import sokoban.results.GameResultRepository;
@@ -142,6 +145,24 @@ public final class GameController {
                     }
                 }
         ));
+    }
+
+    @FXML
+    private void handleMouseClick(
+            @NonNull final MouseEvent event) {
+
+        final var source = (Node) event.getSource();
+        final var row = GridPane.getRowIndex(source);
+        final var col = GridPane.getColumnIndex(source);
+
+        Logger.debug("Click on square ({},{})", row, col);
+
+        getDirectionFromClickPosition(row, col)
+                .ifPresentOrElse(this::performMove,
+                        () -> Logger.warn("Click does not correspond to any direction"));
+    }
+
+    private void performMove(final Direction direction) {
     }
 
 
