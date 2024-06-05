@@ -153,7 +153,14 @@ public class SokobanState implements State<Direction> {
     }
 
     private int isInDirection(Direction direction) {
-
+        Position playerPosition = getPosition(PLAYER_POSITION).move(direction);
+        for (int i = 1; i < 4 ; i++) {
+            if(playerPosition.col() == getPosition(i).col() &&
+                    playerPosition.row() == getPosition(i).row()) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private boolean isEmpty(Position position) {
