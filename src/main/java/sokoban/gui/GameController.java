@@ -37,6 +37,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public final class GameController {
@@ -303,6 +304,14 @@ public final class GameController {
             System.out.println();
 
         }
+    }
+
+    private Optional<Direction> getDirectionFromClickPosition(
+            final int row,
+            final int col) {
+
+        final var playerPosition = state.getPosition(SokobanState.PLAYER_POSITION);
+        return Optional.of(Direction.of(row - playerPosition.row(), col - playerPosition.col()));
     }
 
 
