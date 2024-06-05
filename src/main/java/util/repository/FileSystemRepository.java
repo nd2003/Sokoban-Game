@@ -10,6 +10,12 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Represents a repository to obtain a set of objects. Data is read from a
+ * JSON file that contains an array of JSON objects. The implementation uses a hashcode-based set.
+ *
+ * @param <T> the type of the elements
+ */
 public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
 
     private Set<T> elements;
@@ -22,10 +28,20 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         this.elements = new HashSet<>();
     }
 
+    /**
+     * {@return the list of objects}
+     */
     public Set<T> getAll() {
         return new HashSet<>(elements);
     }
 
+
+    /**
+     * Adds an element to the repository if it does net exist.
+     *
+     * @param element the element to be added
+     * @return the view of the updated repository
+     */
     public Set<T> addOne(
             @NonNull final T element) {
 
@@ -33,6 +49,13 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         return getAll();
     }
 
+
+    /**
+     * Adds each element to the repository which does not exist.
+     *
+     * @param elements the elements to be added
+     * @return the view of the updated repository
+     */
     public Set<T> addMany(
             @NonNull final Collection<T> elements) {
 
@@ -40,6 +63,13 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         return getAll();
     }
 
+
+    /**
+     * Replaces an element of the repository if it already exists. Otherwise, adds an element to the repository.
+     *
+     * @param element the element to be replaced
+     * @return the view of the updated repository
+     */
     public Set<T> replaceOne(
             @NonNull final T element) {
 
@@ -48,6 +78,13 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         return getAll();
     }
 
+
+    /**
+     * Replaces each element of the repository which already exists and adds each element to the repository which does not exist.
+     *
+     * @param elements the elements to be replaced
+     * @return the view of the updated repository
+     */
     public Set<T> replaceMany(
             @NonNull final Collection<T> elements) {
 
@@ -56,11 +93,22 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         return getAll();
     }
 
+    /**
+     * Clears the repository.
+     *
+     * @return the view of the updated repository
+     */
     public Set<T> clear() {
         this.elements.clear();
         return getAll();
     }
 
+    /**
+     * Clears the repository, then re-initializes it with the set of elements.
+     *
+     * @param elements the elements to be added
+     * @return the view of the updated repository
+     */
     public Set<T> replaceAll(
             @NonNull final Collection<T> elements) {
 
@@ -69,6 +117,14 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         return getAll();
     }
 
+
+    /**
+     * Initializes the repository from a file.
+     *
+     * @param file the file which contains the JSON document
+     * @return the view of the updated repository
+     * @throws IOException if any I/O error occurs
+     */
     public Set<T> loadFromFile(
             @NonNull final File file) throws IOException {
 
@@ -76,6 +132,13 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         return elements;
     }
 
+
+    /**
+     * Saves the repository to a file.
+     *
+     * @param file the file which will contain the JSON document
+     * @throws IOException if any I/O error occurs
+     */
     public void saveToFile(
             @NonNull final File file) throws IOException {
 
