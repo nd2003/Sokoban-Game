@@ -6,7 +6,9 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import puzzle.State;
 
 import java.util.EnumSet;
+import java.util.Objects;
 import java.util.Set;
+import java.util.StringJoiner;
 
 public class SokobanState implements State<Direction> {
 
@@ -243,4 +245,35 @@ public class SokobanState implements State<Direction> {
         return new SokobanState(getPosition(PLAYER_POSITION), getPosition(FIRST_BOX_POSITION),
                 getPosition(SECOND_BOX_POSITION), getPosition(THIRD_BOX_POSITION));
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        return (o instanceof SokobanState other)
+                && getPosition(PLAYER_POSITION).equals(other.getPosition(PLAYER_POSITION))
+                && getPosition(FIRST_BOX_POSITION).equals(other.getPosition(FIRST_BOX_POSITION))
+                && getPosition(SECOND_BOX_POSITION).equals(other.getPosition(SECOND_BOX_POSITION))
+                && getPosition(THIRD_BOX_POSITION).equals(other.getPosition(THIRD_BOX_POSITION));
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPosition(PLAYER_POSITION), getPosition(FIRST_BOX_POSITION),
+                getPosition(SECOND_BOX_POSITION), getPosition(THIRD_BOX_POSITION));
+    }
+
+    @Override
+    public String toString() {
+        var sj = new StringJoiner(",", "[", "]");
+        sj.add("Player: " + positions[0].get().toString());
+        sj.add(" BOX1: " + positions[1].get().toString());
+        sj.add(" Box2: " + positions[2].get().toString());
+        sj.add(" BOX3: " + positions[3].get().toString());
+
+        return sj.toString();
+    }
+
 }
