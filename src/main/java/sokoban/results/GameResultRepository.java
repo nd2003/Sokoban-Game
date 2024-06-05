@@ -8,6 +8,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Repository class for the {@link GameResult} entity.
+ */
 public class GameResultRepository extends FileSystemRepository<GameResult> {
 
     public GameResultRepository() {
@@ -28,6 +31,14 @@ public class GameResultRepository extends FileSystemRepository<GameResult> {
         return super.addOne(element);
     }
 
+    /**
+     * Returns the list of {@code n} best results with respect to the time
+     * spent for solving the puzzle.
+     *
+     * @param n the maximum number of results to be returned
+     * @return the list of {@code n} best results with respect to the time
+     * spent for solving the puzzle
+     */
     public List<GameResult> findBest(
             final int n) {
 
