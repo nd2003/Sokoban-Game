@@ -6,6 +6,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -215,6 +216,16 @@ public final class GameController {
                 "/fxml/high-scores.fxml",
                 (Stage) ((Node) actionEvent.getSource()).getScene().getWindow()
         );
+    }
+
+    private void handleSolved(ObservableValue<? extends Boolean> observableValue, boolean oldValue, boolean newValue) {
+        if (newValue) {
+            Logger.info("Player {} has solved the game in {} steps", playerName, countOfSteps.get());
+            stopwatch.stop();
+            messageLabel.setText(String.format("Congratulations, %s!", playerName));
+            resetButton.setDisable(true);
+            giveUpFinishButton.setText("Finish");
+        }
     }
 
 
