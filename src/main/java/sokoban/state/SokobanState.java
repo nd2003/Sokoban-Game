@@ -174,9 +174,19 @@ public class SokobanState implements State<Direction> {
 
 
 
+    /**
+     * Moves the block and the player to the direction specified.
+     *
+     * @param direction the direction to which the block and the player are moved
+     */
     @Override
     public void makeMove(Direction direction) {
-
+        switch (direction) {
+            case UP -> moveUp();
+            case RIGHT -> moveRight();
+            case DOWN -> moveDown();
+            case LEFT -> moveLeft();
+        }
     }
 
     @Override
