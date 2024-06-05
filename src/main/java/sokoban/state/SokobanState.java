@@ -76,6 +76,10 @@ public class SokobanState implements State<Direction> {
     }
 
     private boolean isOnBoard(Position position) {
+        return position.row() > 0 && position.row() < BOARD_SIZE - 1 &&
+                position.col() > 0 && position.col() < BOARD_SIZE - 1 &&
+                board.getPosition(position.row(), position.col()) != WALL &&
+                board.getPosition(position.row(), position.col()) != OUT_OF_BOARD;
 
     }
 
