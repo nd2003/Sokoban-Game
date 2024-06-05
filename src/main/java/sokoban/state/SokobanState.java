@@ -99,7 +99,24 @@ public class SokobanState implements State<Direction> {
 
     @Override
     public boolean isLegalMove(Direction direction) {
-        return false;
+        return switch (direction) {
+            case UP -> canMoveUp();
+            case RIGHT -> canMoveRight();
+            case DOWN -> canMoveDown();
+            case LEFT -> canMoveLeft();
+        };
+    }
+
+    private boolean canMoveLeft() {
+    }
+
+    private boolean canMoveDown() {
+    }
+
+    private boolean canMoveRight() {
+    }
+
+    private boolean canMoveUp() {
     }
 
     @Override
