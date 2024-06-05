@@ -13,10 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.GridPane;
 import lombok.Setter;
 import org.tinylog.Logger;
 import sokoban.results.GameResultRepository;
+import sokoban.state.Direction;
 import sokoban.state.SokobanState;
 import util.javafx.Stopwatch;
 
@@ -110,6 +114,36 @@ public final class GameController {
         clearState();
         showState();
     }
+
+    private void registerKeyEventHandler() {
+        final KeyCombination restartKeyCombination = new KeyCodeCombination(KeyCode.R, KeyCombination.CONTROL_DOWN);
+        final KeyCombination quitKeyCombination = new KeyCodeCombination(KeyCode.Q, KeyCombination.CONTROL_DOWN);
+        Platform.runLater(() -> grid.getScene().setOnKeyPressed(
+                keyEvent -> {
+                    if (restartKeyCombination.match(keyEvent)) {
+                        Logger.debug("Restarting game...");
+                        state = new SokobanState();
+                        resetGame();
+                    } else if (quitKeyCombination.match(keyEvent)) {
+                        Logger.debug("Exiting...");
+                        Platform.exit();
+                    } else if (keyEvent.getCode() == KeyCode.UP) {
+                        Logger.debug("Up arrow pressed");
+                        performMove(Direction.UP);
+                    } else if (keyEvent.getCode() == KeyCode.RIGHT) {
+                        Logger.debug("Right arrow pressed");
+                        performMove(Direction.RIGHT);
+                    } else if (keyEvent.getCode() == KeyCode.DOWN) {
+                        Logger.debug("Down arrow pressed");
+                        performMove(Direction.DOWN);
+                    } else if (keyEvent.getCode() == KeyCode.LEFT) {
+                        Logger.debug("Left arrow pressed");
+                        performMove(Direction.LEFT);
+                    }
+                }
+        ));
+    }
+
 
 
 }
