@@ -6,6 +6,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -183,6 +184,14 @@ public final class GameController {
         } else {
             Logger.warn("Invalid move: {}", direction);
         }
+    }
+
+    public void handleResetButton(ActionEvent actionEvent) {
+        Logger.debug("{} is pressed", ((Button) actionEvent.getSource()).getText());
+        Logger.info("Resetting game");
+        stopwatch.stop();
+        state = new SokobanState();
+        resetGame();
     }
 
 
