@@ -5,6 +5,7 @@ import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import puzzle.State;
 
+import java.util.EnumSet;
 import java.util.Set;
 
 public class SokobanState implements State<Direction> {
@@ -223,9 +224,18 @@ public class SokobanState implements State<Direction> {
 
     }
 
+    /**
+     * {@return the set of directions to which the block can be moved}
+     */
     @Override
     public Set<Direction> getLegalMoves() {
-        return Set.of();
+        var legalMoves = EnumSet.noneOf(Direction.class);
+        for (var direction : Direction.values()) {
+            if (isLegalMove(direction)) {
+                legalMoves.add(direction);
+            }
+        }
+        return legalMoves;
     }
 
     @Override
