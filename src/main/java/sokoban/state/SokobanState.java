@@ -185,33 +185,13 @@ public class SokobanState implements State<Direction> {
     @Override
     public void makeMove(Direction direction) {
         switch (direction) {
-            case UP -> moveUp();
-            case RIGHT -> moveRight();
-            case DOWN -> moveDown();
-            case LEFT -> moveLeft();
+            case UP -> movePlayer(Direction.UP);
+            case RIGHT -> movePlayer(Direction.RIGHT);
+            case DOWN -> movePlayer(Direction.DOWN);
+            case LEFT -> movePlayer(Direction.LEFT);
         }
     }
-
-    private void moveUp() {
-        movePlayer(Direction.UP);
-
-    }
-
-    private void moveRight() {
-        movePlayer(Direction.RIGHT);
-
-    }
-
-    private void moveDown() {
-        movePlayer(Direction.DOWN);
-
-    }
-
-    private void moveLeft() {
-        movePlayer(Direction.LEFT);
-
-    }
-
+    
     private void movePlayer(Direction direction) {
 
         int index = isInDirection(direction);
