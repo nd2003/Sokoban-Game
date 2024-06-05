@@ -12,7 +12,14 @@ import java.util.Set;
 public class JacksonJsonRepository {
     protected static final ObjectMapper MAPPER = new ObjectMapper().registerModule(new JavaTimeModule());
 
-
+    /**
+     * Deserializes a set of objects from JSON.
+     *
+     * @param in           the input stream from which JSON data will be read
+     * @param elementClass represents the class of the elements
+     * @return the set of objects deserialized from JSON
+     * @throws IOException if any I/O error occurs
+     */
     protected static <T> Set<T> readSet(
             @NonNull final InputStream in,
             @NonNull final Class<T> elementClass) throws IOException {
@@ -21,6 +28,13 @@ public class JacksonJsonRepository {
         return MAPPER.readValue(in, type);
     }
 
+
+    /**
+     * Serializes a set of objects to JSON.
+     * @param os the output stream to which JSON data will be written
+     * @param value represents the class of the elements
+     * @throws IOException if any I/O error occurs
+     */
     protected static <T> void writeSet(
             @NonNull final OutputStream os,
             @NonNull final Set<T> value) throws IOException {
