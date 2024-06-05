@@ -209,6 +209,20 @@ public class SokobanState implements State<Direction> {
 
     }
 
+    private void movePlayer(Direction direction) {
+
+        int index = isInDirection(direction);
+        if (index != -1) {
+
+            Position position = getPosition(index);
+            positions[index].set(position.move(direction));
+        }
+
+        Position newPosition = getPosition(PLAYER_POSITION).move(direction);
+        positions[PLAYER_POSITION].set(newPosition);
+
+    }
+
     @Override
     public Set<Direction> getLegalMoves() {
         return Set.of();
