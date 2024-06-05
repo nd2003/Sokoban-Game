@@ -169,7 +169,7 @@ public final class GameController {
                         () -> Logger.warn("Click does not correspond to any direction"));
     }
 
-    
+
     private void performMove(
             final Direction direction) {
 
@@ -254,6 +254,15 @@ public final class GameController {
                     square.setOnMouseClicked(this::handleMouseClick);
                     grid.add(square, col, row);
                 }
+            }
+        }
+    }
+
+    private void clearState() {
+        for (int row = 0; row < grid.getRowCount(); row++) {
+            for (int col = 0; col < grid.getColumnCount(); col++) {
+                getGridNodeAtPosition(grid, row, col)
+                        .ifPresent(node -> ((StackPane) node).getChildren().clear());
             }
         }
     }
