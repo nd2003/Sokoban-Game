@@ -107,17 +107,35 @@ public class SokobanState implements State<Direction> {
         };
     }
 
-    private boolean canMoveLeft() {
+    private boolean canMoveUp() {
+        Position playerPosition = getPosition(PLAYER_POSITION);
+        if (! isOnBoard(playerPosition.moveUp())) {
+            return false;
+        }
+
+        var up = playerPosition.moveUp();
+        return isEmpty(up) ||
+                (playerPosition.row() > 2 && isInDirection(Direction.UP) != -1 && isEmpty(up.moveUp()));
+    }
+
+
+    private boolean canMoveRight() {
     }
 
     private boolean canMoveDown() {
     }
 
-    private boolean canMoveRight() {
+    private boolean canMoveLeft() {
     }
 
-    private boolean canMoveUp() {
+    private int isInDirection(Direction direction) {
+
     }
+
+    private boolean isEmpty(Position position) {
+    }
+
+
 
     @Override
     public void makeMove(Direction direction) {
