@@ -25,7 +25,7 @@
         <maven.checkstyle.version>3.3.1</maven.checkstyle.version>
         <maven.surefire.version>3.2.5</maven.surefire.version>
         <jackson.version>2.14.2</jackson.version>
-        <exec.mainClass><!-- TODO: the fully-qualified class name of your class that contains the main() method to launch the application --></exec.mainClass>
+        <exec.mainClass>sokoban.gui.Main</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
