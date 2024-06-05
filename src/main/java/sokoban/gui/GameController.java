@@ -21,6 +21,7 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import lombok.NonNull;
 import lombok.Setter;
@@ -168,9 +169,7 @@ public final class GameController {
                         () -> Logger.warn("Click does not correspond to any direction"));
     }
 
-    private void performMove(final Direction direction) {
-    }
-
+    
     private void performMove(
             final Direction direction) {
 
@@ -225,6 +224,37 @@ public final class GameController {
             messageLabel.setText(String.format("Congratulations, %s!", playerName));
             resetButton.setDisable(true);
             giveUpFinishButton.setText("Finish");
+        }
+    }
+
+    private void populateGrid() {
+        for (int row = 0; row < grid.getRowCount(); row++) {
+            for (int col = 0; col < grid.getColumnCount(); col++) {
+                final var square = new StackPane();
+                square.getStyleClass().add("square");
+                var objectOnPosition = state.board.getPosition(row,col);
+
+                if (objectOnPosition != SokobanState.WALL &&
+                        objectOnPosition != SokobanState.OUT_OF_BOARD &&
+                        objectOnPosition != SokobanState.TARGET) {
+                    square.getStyleClass().add("light");
+                    square.setOnMouseClicked(this::handleMouseClick);
+                    grid.add(square, col, row);
+                }
+                if (objectOnPosition == SokobanState.OUT_OF_BOARD) {
+                    square.getStyleClass().add("out");
+                    grid.add(square, col, row);
+                }
+                if (objectOnPosition == SokobanState.WALL) {
+                    square.getStyleClass().add("wall");
+                    grid.add(square, col, row);
+                }
+                if(objectOnPosition == SokobanState.TARGET) {
+                    square.getStyleClass().add("target");
+                    square.setOnMouseClicked(this::handleMouseClick);
+                    grid.add(square, col, row);
+                }
+            }
         }
     }
 
