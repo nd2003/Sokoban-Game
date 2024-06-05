@@ -6,7 +6,19 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.util.Optional;
 
+/**
+ * Provides support for the use of the {@link FileChooser} class.
+ */
 public class FileChooserHelper {
+
+
+    /**
+     * Instantiates a {@link FileChooser} object, than opens it. Sets the title of the object and adds an {@link FileChooser.ExtensionFilter} for JSON documents.
+     *
+     * @param isOpen whether the document should be opened or saved
+     * @param stage  the stage
+     * @return the selected file
+     */
     public static Optional<File> show(boolean isOpen, Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("json documents", "*.json"));
