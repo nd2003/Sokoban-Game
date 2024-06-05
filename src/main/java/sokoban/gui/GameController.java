@@ -28,6 +28,7 @@ import lombok.Setter;
 import org.tinylog.Logger;
 import sokoban.results.GameResultRepository;
 import sokoban.state.Direction;
+import sokoban.state.Position;
 import sokoban.state.SokobanState;
 import util.javafx.ControllerHelper;
 import util.javafx.Stopwatch;
@@ -264,6 +265,43 @@ public final class GameController {
                 getGridNodeAtPosition(grid, row, col)
                         .ifPresent(node -> ((StackPane) node).getChildren().clear());
             }
+        }
+    }
+
+    private void showState() {
+        clearState();
+
+        Position playerPosition = state.getPosition(SokobanState.PLAYER_POSITION);
+        getGridNodeAtPosition(grid, playerPosition)
+                .ifPresent(node -> ((StackPane) node).getChildren().add(pieceViews[0]));
+
+        //Logger.info(playerPosition.toString());
+
+        Position firstBoxPosition = state.getPosition(SokobanState.FIRST_BOX_POSITION);
+        getGridNodeAtPosition(grid, firstBoxPosition)
+                .ifPresent(node -> ((StackPane) node).getChildren().add(pieceViews[1]));
+
+        //Logger.info(firstBoxPosition.toString());
+
+        Position secondBoxPosition = state.getPosition(SokobanState.SECOND_BOX_POSITION);
+        getGridNodeAtPosition(grid, secondBoxPosition)
+                .ifPresent(node -> ((StackPane) node).getChildren().add(pieceViews[2]));
+
+        //Logger.info(secondBoxPosition.toString());
+
+        Position thirdBoxPosition = state.getPosition(SokobanState.THIRD_BOX_POSITION);
+        getGridNodeAtPosition(grid, thirdBoxPosition)
+                .ifPresent(node -> ((StackPane) node).getChildren().add(pieceViews[3]));
+
+        //Logger.info(thirdBoxPosition.toString());
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j <9; j++) {
+                System.out.print(state.board.getPosition(i,j) + " ");
+
+            }
+            System.out.println();
+
         }
     }
 
