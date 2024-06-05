@@ -239,7 +239,8 @@ public class SokobanState implements State<Direction> {
     }
 
     @Override
-    public State<Direction> clone() {
-        return null;
+    public SokobanState clone() {
+        return new SokobanState(getPosition(PLAYER_POSITION), getPosition(FIRST_BOX_POSITION),
+                getPosition(SECOND_BOX_POSITION), getPosition(THIRD_BOX_POSITION));
     }
 }
