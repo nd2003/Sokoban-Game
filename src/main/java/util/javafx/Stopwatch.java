@@ -14,7 +14,7 @@ import org.apache.commons.lang3.time.DurationFormatUtils;
 /**
  * A general-purpose stopwatch.
  */
-public class Stopwatch {
+public final class Stopwatch {
 
     private LongProperty seconds = new SimpleLongProperty();
     private StringProperty hhmmss = new SimpleStringProperty();

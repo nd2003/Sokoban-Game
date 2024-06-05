@@ -9,7 +9,7 @@ import java.util.Optional;
 /**
  * Provides support for the use of the {@link FileChooser} class.
  */
-public class FileChooserHelper {
+public final class FileChooserHelper {
 
 
     /**
