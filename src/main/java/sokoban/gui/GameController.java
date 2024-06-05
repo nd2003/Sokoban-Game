@@ -314,6 +314,23 @@ public final class GameController {
         return Optional.of(Direction.of(row - playerPosition.row(), col - playerPosition.col()));
     }
 
+    private static Optional<Node> getGridNodeAtPosition(
+            @NonNull final GridPane gridPane,
+            @NonNull final Position pos) {
+
+        return getGridNodeAtPosition(gridPane, pos.row(), pos.col());
+    }
+
+    private static Optional<Node> getGridNodeAtPosition(
+            @NonNull final GridPane gridPane,
+            final int row,
+            final int col) {
+
+        return gridPane.getChildren().stream()
+                .filter(child -> GridPane.getRowIndex(child) == row && GridPane.getColumnIndex(child) == col)
+                .findFirst();
+    }
+
 
 
 }
