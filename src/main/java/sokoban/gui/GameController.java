@@ -20,16 +20,20 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import lombok.NonNull;
 import lombok.Setter;
 import org.tinylog.Logger;
 import sokoban.results.GameResultRepository;
 import sokoban.state.Direction;
 import sokoban.state.SokobanState;
+import util.javafx.ControllerHelper;
 import util.javafx.Stopwatch;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.time.Instant;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public final class GameController {
@@ -192,6 +196,25 @@ public final class GameController {
         stopwatch.stop();
         state = new SokobanState();
         resetGame();
+    }
+
+    public void handleGiveUpFinishButton(
+            @NonNull final ActionEvent actionEvent) throws IOException {
+
+        final var buttonText = ((Button) actionEvent.getSource()).getText();
+        Logger.debug("{} is pressed", buttonText);
+        if (Objects.equals(buttonText, "Give Up")) {
+            stopwatch.stop();
+        }
+
+        Logger.debug("Saving result");
+        gameResultRepository.addOne(createGameResult());
+
+        ControllerHelper.loadAndShowFXML(
+                fxmlLoader,
+                "/fxml/high-scores.fxml",
+                (Stage) ((Node) actionEvent.getSource()).getScene().getWindow()
+        );
     }
 
 
