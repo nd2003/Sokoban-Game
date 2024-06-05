@@ -189,6 +189,26 @@ public class SokobanState implements State<Direction> {
         }
     }
 
+    private void moveUp() {
+        movePlayer(Direction.UP);
+
+    }
+
+    private void moveRight() {
+        movePlayer(Direction.RIGHT);
+
+    }
+
+    private void moveDown() {
+        movePlayer(Direction.DOWN);
+
+    }
+
+    private void moveLeft() {
+        movePlayer(Direction.LEFT);
+
+    }
+
     @Override
     public Set<Direction> getLegalMoves() {
         return Set.of();
