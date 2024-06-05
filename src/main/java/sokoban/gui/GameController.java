@@ -1,5 +1,6 @@
 package sokoban.gui;
 
+import javafx.animation.Animation;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -93,5 +94,22 @@ public final class GameController {
         resetGame();
     }
 
-    
+    private void resetGame() {
+
+        countOfSteps.set(0);
+        isSolved.set(false);
+
+        // initializing watch
+        startTime = Instant.now();
+        if (stopwatch.getStatus() == Animation.Status.PAUSED) {
+            stopwatch.reset();
+        }
+        stopwatch.start();
+
+        // initializing board
+        clearState();
+        showState();
+    }
+
+
 }
