@@ -94,7 +94,7 @@ public class SokobanState implements State<Direction> {
 
     @Override
     public boolean isSolved() {
-        return false;
+        return solved.get();
     }
 
     @Override
