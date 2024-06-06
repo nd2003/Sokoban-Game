@@ -18,10 +18,13 @@ public class GameResult {
     @EqualsAndHashCode.Include
     private Long id;
 
+    /**
+     * The name of the player.
+     */
     private String player;
 
     /**
-     * Indicates whether the player has solved the puzzle.
+     * Indicates whether the player has finished the game.
      */
     private boolean solved;
 
@@ -35,6 +38,8 @@ public class GameResult {
      */
     private Duration duration;
 
-
+    /**
+     * The date and time when the game has started.
+     */
     private ZonedDateTime created;
 }

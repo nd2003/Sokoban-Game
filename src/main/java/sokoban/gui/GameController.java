@@ -87,12 +87,11 @@ public final class GameController {
 
     @FXML
     private void initialize() {
-        // creating bindings
+
         stepsLabel.textProperty().bind(countOfSteps.asString());
         stopwatchLabel.textProperty().bind(stopwatch.hhmmssProperty());
         isSolved.addListener(this::handleSolved);
 
-        // loading images
         pieceViews = Stream.of("man.png", "box.png", "box_2.png", "box_3.png")
                 .map(s -> "/images/" + s)
                 .peek(s -> Logger.debug("Loading image resource {}", s))
@@ -101,13 +100,10 @@ public final class GameController {
                 .toArray(ImageView[]::new);
 
         state = new SokobanState();
-        // populating grid
         populateGrid();
 
-        // registering listeners
         registerKeyEventHandler();
 
-        // starting new game
         Platform.runLater(() -> messageLabel.setText(String.format("Good luck, %s!", playerName)));
         resetGame();
     }
@@ -117,14 +113,12 @@ public final class GameController {
         countOfSteps.set(0);
         isSolved.set(false);
 
-        // initializing watch
         startTime = Instant.now();
         if (stopwatch.getStatus() == Animation.Status.PAUSED) {
             stopwatch.reset();
         }
         stopwatch.start();
 
-        // initializing board
         clearState();
         showState();
     }
