@@ -10,29 +10,68 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.StringJoiner;
 
+
+/**
+ * Represents the state of the Sokoban game.
+ * The SokobanState class implements the State interface with Direction as the generic type.
+ * It manages the game board, player and box positions,
+ * and handles game logic such as moves and win conditions.
+ */
 public class SokobanState implements State<Direction> {
 
     /**
-     * Instantiate the board.
+     * The game board, represented as a Map instance.
      */
     public static Map board = new Map();
 
+    /**
+     * The size of the game board.
+     */
     public static final int BOARD_SIZE = board.width();
 
+    /**
+     * Symbol representing a wall.
+     */
     public static final char WALL = '#';
+
+    /**
+     * Symbol representing a target position.
+     */
     public static final char TARGET = '.';
+
+    /**
+     * Symbol representing a position outside the board.
+     */
     public static final char OUT_OF_BOARD = '-';
 
+
+    /**
+     * Index for the player's position in the positions array.
+     */
     public static final int PLAYER_POSITION = 0;
 
+    /**
+     * Index for the first box's position in the positions array.
+     */
     public static final int FIRST_BOX_POSITION = 1;
+
+    /**
+     * Index for the second box's position in the positions array.
+     */
     public static final int SECOND_BOX_POSITION = 2;
+
+    /**
+     * Index for the third box's position in the positions array.
+     */
     public static final int THIRD_BOX_POSITION = 3;
 
     private ReadOnlyObjectWrapper<Position>[] positions;
 
     private final ReadOnlyBooleanWrapper solved;
 
+    /**
+     * Constructs a SokobanState with default initial positions.
+     */
     public SokobanState() {
         this(new Position(1, 1),
                 new Position(2, 2),
@@ -41,10 +80,19 @@ public class SokobanState implements State<Direction> {
         board = new Map();
     }
 
+
+    /**
+     * Array of positions representing the target locations for the boxes.
+     */
     public static final Position[] finishPositions =  {
             new Position(3,7), new Position(4,7), new Position(5,7)
     };
 
+    /**
+     * Constructs a SokobanState with specified initial positions.
+     *
+     * @param positions the initial positions for the player and the boxes.
+     */
     public SokobanState(Position... positions) {
         checkPositions(positions);
         this.positions = new ReadOnlyObjectWrapper[4];
@@ -87,19 +135,43 @@ public class SokobanState implements State<Direction> {
 
     }
 
+    /**
+     * Gets the position at the specified index.
+     *
+     * @param index the index of the position.
+     * @return the position at the specified index.
+     */
     public Position getPosition(int index) {
         return positions[index].get();
     }
 
+    /**
+     * Gets the read-only property for the position at the specified index.
+     *
+     * @param index the index of the position.
+     * @return the read-only property for the position at the specified index.
+     */
     public ReadOnlyObjectProperty<Position> positionProperty(int index) {
         return positions[index].getReadOnlyProperty();
     }
 
+    /**
+     * Checks if the game is solved.
+     *
+     * @return true if the game is solved, false otherwise.
+     */
     @Override
     public boolean isSolved() {
         return solved.get();
     }
 
+
+    /**
+     * Checks if a move in the specified direction is legal.
+     *
+     * @param direction the direction to check.
+     * @return true if the move is legal, false otherwise.
+     */
     @Override
     public boolean isLegalMove(Direction direction) {
         return switch (direction) {
@@ -207,7 +279,9 @@ public class SokobanState implements State<Direction> {
     }
 
     /**
-     * {@return the set of directions to which the block can be moved}
+     * Returns the set of legal moves for the player.
+     *
+     * @return the set of legal moves.
      */
     @Override
     public Set<Direction> getLegalMoves() {
@@ -220,6 +294,11 @@ public class SokobanState implements State<Direction> {
         return legalMoves;
     }
 
+    /**
+     * Creates a copy of the current state.
+     *
+     * @return a new SokobanState object with the same positions.
+     */
     @Override
     public SokobanState clone() {
         return new SokobanState(getPosition(PLAYER_POSITION), getPosition(FIRST_BOX_POSITION),

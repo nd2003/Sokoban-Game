@@ -24,8 +24,7 @@ public abstract class ResourcesRepository<T> extends JacksonJsonRepository {
      * read JSON data.
      *
      * @param elementClass represents the type of the elements
-     * @param resourceName the name of the resource that contains JSON data to
-     *                     be read
+     * @param resourceName the name of the resource that contains JSON data to be read
      */
     protected ResourcesRepository(
             @NonNull final Class<T> elementClass,

@@ -9,13 +9,21 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Set;
 
+/**
+ * Utility class for reading and writing sets of objects to and from JSON using Jackson ObjectMapper.
+ */
 public class JacksonJsonRepository {
+
+    /**
+     * ObjectMapper instance for JSON serialization and deserialization,
+     * configured with JavaTimeModule.
+     */
     protected static final ObjectMapper MAPPER = new ObjectMapper().registerModule(new JavaTimeModule());
 
     /**
      * Deserializes a set of objects from JSON.
      *
-     * @param in           the input stream from which JSON data will be read
+     * @param in the input stream from which JSON data will be read
      * @param elementClass represents the class of the elements
      * @return the set of objects deserialized from JSON
      * @throws IOException if any I/O error occurs

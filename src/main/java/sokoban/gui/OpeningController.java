@@ -17,6 +17,9 @@ import util.javafx.FileChooserHelper;
 import javax.inject.Inject;
 import java.io.IOException;
 
+/**
+ * Controller class for the opening screen of the game.
+ */
 public final class OpeningController {
 
     @Inject
@@ -31,6 +34,11 @@ public final class OpeningController {
     @FXML
     private Label errorLabel;
 
+    /**
+     * Action handler for loading the scoreboard.
+     *
+     * @param actionEvent the ActionEvent triggered by the user
+     */
     public void loadScoreboardAction(
             @NonNull final ActionEvent actionEvent) {
 
@@ -47,6 +55,12 @@ public final class OpeningController {
                 });
     }
 
+    /**
+     * Action handler for starting the game.
+     *
+     * @param actionEvent the ActionEvent triggered by the user
+     * @throws IOException if an I/O error occurs during loading of the game scene
+     */
     public void startAction(
             @NonNull final ActionEvent actionEvent) throws IOException {
 

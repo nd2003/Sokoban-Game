@@ -42,6 +42,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+/**
+ * Controller class for managing the game view.
+ */
 public final class GameController {
     @FXML
     private Label messageLabel;
@@ -188,6 +191,11 @@ public final class GameController {
         }
     }
 
+    /**
+     * Handles click events for the reset button.
+     *
+     * @param actionEvent the ActionEvent representing the button click
+     */
     public void handleResetButton(ActionEvent actionEvent) {
         Logger.debug("{} is pressed", ((Button) actionEvent.getSource()).getText());
         Logger.info("Resetting game");
@@ -196,6 +204,12 @@ public final class GameController {
         resetGame();
     }
 
+    /**
+     * Handles click events for the give up/finish button.
+     *
+     * @param actionEvent the ActionEvent representing the button click
+     * @throws IOException if an I/O error occurs during navigation to the high scores screen
+     */
     public void handleGiveUpFinishButton(
             @NonNull final ActionEvent actionEvent) throws IOException {
 
@@ -247,7 +261,7 @@ public final class GameController {
                     square.getStyleClass().add("wall");
                     grid.add(square, col, row);
                 }
-                if(objectOnPosition == SokobanState.TARGET) {
+                if (objectOnPosition == SokobanState.TARGET) {
                     square.getStyleClass().add("target");
                     square.setOnMouseClicked(this::handleMouseClick);
                     grid.add(square, col, row);

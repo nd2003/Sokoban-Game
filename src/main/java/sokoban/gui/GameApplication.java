@@ -15,7 +15,11 @@ import javax.inject.Singleton;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * The main class of the Sokoban game application.
+ */
 public final class GameApplication extends Application {
+
     private final GuiceContext context = new GuiceContext(this, () -> List.of(
             new AbstractModule() {
                 @Override
@@ -28,6 +32,12 @@ public final class GameApplication extends Application {
     @Inject
     private FXMLLoader fxmlLoader;
 
+    /**
+     * Starts the Sokoban game application.
+     *
+     * @param stage the primary stage for the application
+     * @throws IOException if an I/O error occurs during loading of the opening screen
+     */
     @Override
     public void start(Stage stage) throws IOException {
         Logger.info("Starting application");

@@ -27,6 +27,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.List;
 
+/**
+ * Controller class for managing the high score view.
+ */
 public final class HighScoreController {
 
     @Inject
@@ -93,12 +96,23 @@ public final class HighScoreController {
         highScoreTable.setItems(observableResult);
     }
 
+    /**
+     * Handles the restart button action by loading the opening screen.
+     *
+     * @param actionEvent the ActionEvent triggered by the user
+     * @throws IOException if an I/O error occurs during loading of the opening screen
+     */
     public void handleRestartButton(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Logger.debug("{} is pressed", ((Button) actionEvent.getSource()).getText());
         ControllerHelper.loadAndShowFXML(fxmlLoader, "/fxml/opening.fxml", stage);
     }
 
+    /**
+     * Handles the save scoreboard button action by allowing the user to choose a file to save the scoreboard.
+     *
+     * @param actionEvent the ActionEvent triggered by the user
+     */
     public void handleSaveScoreboard(ActionEvent actionEvent) {
         FileChooserHelper.show(
                         false,

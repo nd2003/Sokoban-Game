@@ -21,6 +21,12 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
     private Set<T> elements;
     private final Class<T> elementsClass;
 
+    /**
+     * Constructs a FileSystemRepository with the specified element class.
+     *
+     * @param elementClass the class object representing
+     *                     the type of elements to be stored in the repository
+     */
     protected FileSystemRepository(
             @NonNull final Class<T> elementClass) {
 
@@ -29,7 +35,7 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
     }
 
     /**
-     * {@return the list of objects}
+     * {@return the set of objects}
      */
     public Set<T> getAll() {
         return new HashSet<>(elements);
@@ -80,7 +86,8 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
 
 
     /**
-     * Replaces each element of the repository which already exists and adds each element to the repository which does not exist.
+     * Replaces each element of the repository which already exists
+     * and adds each element to the repository which does not exist.
      *
      * @param elements the elements to be replaced
      * @return the view of the updated repository
