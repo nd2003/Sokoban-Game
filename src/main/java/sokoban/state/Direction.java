@@ -13,13 +13,21 @@ public enum Direction {
     private final int rowChange;
     private final int colChange;
 
+    /**
+     * Constructor for the Direction enum.
+     * Initializes a Direction instance with the specified changes in row and column.
+     *
+     * @param rowChange the change in the row position associated with this direction.
+     * @param colChange the change in the column position associated with this direction.
+     */
     Direction(int rowChange, int colChange) {
         this.rowChange = rowChange;
         this.colChange = colChange;
     }
 
     /**
-     * {@return the change in the row coordinate when moving to the direction}
+     * {@return the change in the row coordinate when moving to the
+     * direction}
      */
     public int getRowChange() {
         return rowChange;

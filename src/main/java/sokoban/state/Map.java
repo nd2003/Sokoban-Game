@@ -5,8 +5,16 @@ package sokoban.state;
  */
 public class Map {
 
+    /**
+     *  Represents the game board.
+     */
     public Character[][] board;
 
+
+    /**
+     * Constructs a Map instance and initializes the board with a predefined layout.
+     * The layout is represented as a 2D array of characters.
+     */
     public Map() {
         board= new Character[][]{
                 {'#', '#', '#', '#', '#', '-', '-', '-', '-'},
