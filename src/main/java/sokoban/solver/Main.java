@@ -4,6 +4,7 @@ import puzzle.solver.BreadthFirstSearch;
 import sokoban.state.Direction;
 import sokoban.state.SokobanState;
 
+
 public class Main {
 
     public static void main(String[] args) {

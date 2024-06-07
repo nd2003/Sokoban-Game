@@ -42,6 +42,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+
 /**
  * Controller class for managing the game view.
  */
@@ -169,7 +170,6 @@ public final class GameController {
                 .ifPresentOrElse(this::performMove,
                         () -> Logger.warn("Click does not correspond to any direction"));
     }
-
 
     private void performMove(
             final Direction direction) {

@@ -8,11 +8,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
+
 /**
  * Repository class for the {@link GameResult} entity.
  */
 public class GameResultRepository extends FileSystemRepository<GameResult> {
-
 
     /**
      * Constructor for the GameResultRepository.
@@ -24,7 +24,7 @@ public class GameResultRepository extends FileSystemRepository<GameResult> {
 
     /**
      * Adds a new GameResult element to the set, ensuring it has
-     * a unique ID and setting the creation timestamp.
+     * an unique ID and setting the creation timestamp.
      *
      * @param element the GameResult element to be added; must not be null.
      * @return the updated set of GameResult elements after adding the new element.
@@ -51,7 +51,7 @@ public class GameResultRepository extends FileSystemRepository<GameResult> {
      *
      * @param n the maximum number of results to be returned
      * @return the list of {@code n} best results with respect to the steps taken
-     *      * for finishing the game.
+     * for finishing the game.
      */
     public List<GameResult> findBest(
             final int n) {

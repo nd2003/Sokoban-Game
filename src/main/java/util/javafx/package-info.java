@@ -1,4 +1,4 @@
 /**
- * Provides utility classes for JavaFx-based ui .
+ * Provides utility classes for JavaFx-based ui.
  */
 package util.javafx;

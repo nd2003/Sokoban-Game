@@ -41,7 +41,6 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         return new HashSet<>(elements);
     }
 
-
     /**
      * Adds an element to the repository if it does net exist.
      *
@@ -54,7 +53,6 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         elements.add(element);
         return getAll();
     }
-
 
     /**
      * Adds each element to the repository which does not exist.
@@ -69,9 +67,9 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         return getAll();
     }
 
-
     /**
-     * Replaces an element of the repository if it already exists. Otherwise, adds an element to the repository.
+     * Replaces an element of the repository if it already exists.
+     * Otherwise, adds an element to the repository.
      *
      * @param element the element to be replaced
      * @return the view of the updated repository
@@ -83,7 +81,6 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         elements.add(element);
         return getAll();
     }
-
 
     /**
      * Replaces each element of the repository which already exists
@@ -124,7 +121,6 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         return getAll();
     }
 
-
     /**
      * Initializes the repository from a file.
      *
@@ -138,7 +134,6 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
         elements = readSet(new FileInputStream(file), this.elementsClass);
         return elements;
     }
-
 
     /**
      * Saves the repository to a file.

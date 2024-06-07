@@ -11,6 +11,7 @@ import javafx.beans.property.StringProperty;
 import javafx.util.Duration;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 
+
 /**
  * A general-purpose stopwatch.
  */
@@ -61,7 +62,8 @@ public final class Stopwatch {
     }
 
     /**
-     * Resets the stopwatch. In order to reset the stopwatch it must be paused first with the {@link #stop()} method.
+     * Resets the stopwatch. In order to reset the stopwatch
+     * it must be paused first with the {@link #stop()} method.
      *
      * @throws IllegalStateException if the stopwatch is not paused
      */

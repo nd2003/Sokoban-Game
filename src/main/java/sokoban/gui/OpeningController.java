@@ -17,6 +17,7 @@ import util.javafx.FileChooserHelper;
 import javax.inject.Inject;
 import java.io.IOException;
 
+
 /**
  * Controller class for the opening screen of the game.
  */

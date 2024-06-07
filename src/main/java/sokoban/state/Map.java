@@ -1,7 +1,8 @@
 package sokoban.state;
 
+
 /**
- * Represents the map of the game.
+ * Represents the board of the game.
  */
 public class Map {
 
@@ -9,7 +10,6 @@ public class Map {
      *  Represents the game board.
      */
     public Character[][] board;
-
 
     /**
      * Constructs a Map instance and initializes the board with a predefined layout.

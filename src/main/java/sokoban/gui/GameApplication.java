@@ -15,6 +15,7 @@ import javax.inject.Singleton;
 import java.io.IOException;
 import java.util.List;
 
+
 /**
  * The main class of the Sokoban game application.
  */

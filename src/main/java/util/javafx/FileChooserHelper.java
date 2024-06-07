@@ -6,11 +6,11 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.util.Optional;
 
+
 /**
  * Provides support for the use of the {@link FileChooser} class.
  */
 public final class FileChooserHelper {
-
 
     /**
      * Instantiates a {@link FileChooser} object, than opens it.

@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Set;
 
+
 /**
  * Utility class for reading and writing sets of objects to and from JSON using Jackson ObjectMapper.
  */
@@ -35,7 +36,6 @@ public class JacksonJsonRepository {
         final var type = MAPPER.getTypeFactory().constructCollectionType(Set.class, elementClass);
         return MAPPER.readValue(in, type);
     }
-
 
     /**
      * Serializes a set of objects to JSON.

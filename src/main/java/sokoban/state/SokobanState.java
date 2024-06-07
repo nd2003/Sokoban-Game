@@ -142,10 +142,10 @@ public class SokobanState implements State<Direction> {
     }
 
     /**
-     * Gets the position at the specified index.
+     * Gets the position of an object.
      *
      * @param index the index of the position.
-     * @return the position at the specified index.
+     * @return the position of an object.
      */
     public Position getPosition(int index) {
         return positions[index].get();
@@ -170,7 +170,6 @@ public class SokobanState implements State<Direction> {
     public boolean isSolved() {
         return solved.get();
     }
-
 
     /**
      * Checks if a move in the specified direction is legal.
@@ -198,7 +197,6 @@ public class SokobanState implements State<Direction> {
         return isEmpty(up) ||
                 (playerPosition.row() > 2 && isInDirection(Direction.UP) != -1 && isEmpty(up.moveUp()));
     }
-
 
     private boolean canMoveRight() {
         Position playerPosition = getPosition(PLAYER_POSITION);
@@ -252,8 +250,6 @@ public class SokobanState implements State<Direction> {
         }
         return board.getPosition(position.row(), position.col()) != WALL;
     }
-
-
 
     /**
      * Moves the block and the player to the direction specified.

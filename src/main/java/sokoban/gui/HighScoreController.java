@@ -27,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.List;
 
+
 /**
  * Controller class for managing the high score view.
  */

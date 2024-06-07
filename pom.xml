@@ -6,7 +6,7 @@
     <artifactId>homework-template-project</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <description>The project is to make a Sokoban game with a javafx user interface</description>
+    <description>The project is to make a Sokoban game with a javafx user interface.</description>
     <developers>
         <developer>
             <name>Nagy Dávid Róbert</name>
