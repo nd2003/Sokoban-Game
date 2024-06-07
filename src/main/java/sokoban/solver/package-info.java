@@ -1,4 +1,4 @@
 /**
- * Package for solving Sokoban puzzles.
+ * Package for solving Sokoban game.
  */
 package sokoban.solver;
