@@ -1,4 +1,4 @@
 /**
- * JavaFX-based game to play the sokoban game.
+ * Package for JavaFX-based ui for sokoban game.
  */
 package sokoban.gui;

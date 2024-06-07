@@ -1,4 +1,4 @@
 /**
- * State-space representation for the sliding puzzle.
+ * Package for state-space representation for sokoban game.
  */
 package sokoban.state;
