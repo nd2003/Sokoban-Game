@@ -127,7 +127,13 @@ public class SokobanState implements State<Direction> {
         }
     }
 
-    private boolean isOnBoard(Position position) {
+    /**
+     * Checks if a position is within the board boundaries and not a wall or out-of-board area.
+     *
+     * @param position the position to check.
+     * @return true if the position is valid, false otherwise.
+     */
+    boolean isOnBoard(Position position) {
         return position.row() > 0 && position.row() < BOARD_SIZE - 1 &&
                 position.col() > 0 && position.col() < BOARD_SIZE - 1 &&
                 board.getPosition(position.row(), position.col()) != WALL &&
