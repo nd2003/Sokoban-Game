@@ -59,7 +59,7 @@ public class GameResultRepository extends FileSystemRepository<GameResult> {
         return getAll().stream()
                 .filter(GameResult::isSolved)
                 .sorted(Comparator.comparing(GameResult::getSteps)
-                        .thenComparing(GameResult::getCreated, Comparator.reverseOrder()))
+                        .thenComparing(GameResult::getDuration))
                 .limit(n)
                 .toList();
     }

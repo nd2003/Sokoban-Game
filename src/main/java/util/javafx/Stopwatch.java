@@ -34,13 +34,6 @@ public final class Stopwatch {
     }
 
     /**
-     * {@return a property to access the number of seconds elapsed}
-     */
-    public LongProperty secondsProperty() {
-        return seconds;
-    }
-
-    /**
      * {@return a property to access the time elapsed in {@code hh:mm:ss} format}
      */
     public StringProperty hhmmssProperty() {

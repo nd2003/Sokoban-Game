@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,73 +50,6 @@ public abstract class FileSystemRepository<T> extends JacksonJsonRepository {
             @NonNull final T element) {
 
         elements.add(element);
-        return getAll();
-    }
-
-    /**
-     * Adds each element to the repository which does not exist.
-     *
-     * @param elements the elements to be added
-     * @return the view of the updated repository
-     */
-    public Set<T> addMany(
-            @NonNull final Collection<T> elements) {
-
-        elements.forEach(this::addOne);
-        return getAll();
-    }
-
-    /**
-     * Replaces an element of the repository if it already exists.
-     * Otherwise, adds an element to the repository.
-     *
-     * @param element the element to be replaced
-     * @return the view of the updated repository
-     */
-    public Set<T> replaceOne(
-            @NonNull final T element) {
-
-        elements.remove(element);
-        elements.add(element);
-        return getAll();
-    }
-
-    /**
-     * Replaces each element of the repository which already exists
-     * and adds each element to the repository which does not exist.
-     *
-     * @param elements the elements to be replaced
-     * @return the view of the updated repository
-     */
-    public Set<T> replaceMany(
-            @NonNull final Collection<T> elements) {
-
-        this.elements.removeAll(elements);
-        this.elements.addAll(elements);
-        return getAll();
-    }
-
-    /**
-     * Clears the repository.
-     *
-     * @return the view of the updated repository
-     */
-    public Set<T> clear() {
-        this.elements.clear();
-        return getAll();
-    }
-
-    /**
-     * Clears the repository, then re-initializes it with the set of elements.
-     *
-     * @param elements the elements to be added
-     * @return the view of the updated repository
-     */
-    public Set<T> replaceAll(
-            @NonNull final Collection<T> elements) {
-
-        clear();
-        this.elements.addAll(elements);
         return getAll();
     }
 
