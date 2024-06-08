@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -104,9 +106,13 @@ public final class HighScoreController {
      * @throws IOException if an I/O error occurs during loading of the opening screen
      */
     public void handleRestartButton(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Logger.debug("{} is pressed", ((Button) actionEvent.getSource()).getText());
-        ControllerHelper.loadAndShowFXML(fxmlLoader, "/fxml/opening.fxml", stage);
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        fxmlLoader.setLocation(getClass().getResource("/fxml/opening.fxml"));
+        Parent root = fxmlLoader.load();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     /**

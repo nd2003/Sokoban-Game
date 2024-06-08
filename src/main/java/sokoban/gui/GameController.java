@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -222,11 +224,11 @@ public final class GameController {
         Logger.debug("Saving result");
         gameResultRepository.addOne(createGameResult());
 
-        ControllerHelper.loadAndShowFXML(
-                fxmlLoader,
-                "/fxml/high-scores.fxml",
-                (Stage) ((Node) actionEvent.getSource()).getScene().getWindow()
-        );
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        fxmlLoader.setLocation(getClass().getResource("/fxml/high-scores.fxml"));
+        Parent root = fxmlLoader.load();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     private void handleSolved(ObservableValue<? extends Boolean> observableValue, boolean oldValue, boolean newValue) {
