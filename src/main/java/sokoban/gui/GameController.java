@@ -33,7 +33,6 @@ import sokoban.results.GameResultRepository;
 import sokoban.state.Direction;
 import sokoban.state.Position;
 import sokoban.state.SokobanState;
-import util.javafx.ControllerHelper;
 import util.javafx.Stopwatch;
 
 import javax.inject.Inject;

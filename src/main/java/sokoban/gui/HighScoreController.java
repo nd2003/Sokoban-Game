@@ -18,7 +18,6 @@ import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.tinylog.Logger;
 import sokoban.results.GameResult;
 import sokoban.results.GameResultRepository;
-import util.javafx.ControllerHelper;
 import util.javafx.FileChooserHelper;
 
 import javax.inject.Inject;
